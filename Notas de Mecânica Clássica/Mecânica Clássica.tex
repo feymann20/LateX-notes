@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{meuestilo}
+\title{Mecânica Clássica, Segundo Contato}
+\author{H. Natã}
+\begin{document}
+ \maketitle
+ \section{Formulação Newtoniana}
+ \subsection{Cinemática}
+ 
+ Dado um referencial, a posição de um ponto pode ser especificado dado pelo vetor posição 
+ $$\vb{x}=x_i\vb{e}_i$$
+ 
+ Isso é justamente uma combinação linear dos vetores da base que assumimos aqui sejam ortogonais e normalizados e também estamos utilizando a convenção da Einstein. Os pontos podem ser parametrizados por um parâmetro $t$ que será o nosso tempo,que será assumido monotonicamente crescente deixando evidente a noção de passado e futuro. 
+ 
+ Uma quantidade importante que possuimos na física é a distância. No ponto de vista matemático a distância é conhecida como a métrica do espaço que sendo estudado. Por exemplo, a métrica euclidiana definida por:
+ $$d(x,y)=\sqrt{\sum_{i}(x_i-y_i)^2}$$
+ 
+ Essa definição funciona muito bem no espaço físico que por enquanto estamos lidando.Também temos interesse buscar propriedades do vetor posição, como a sua derivada temporal, 
+ $$\vb{v}(t)=\dot{\vb{x}}(t)$$
+ 
+ 
+ Seja s um parametro que varia suavemente e monotonicamente ao longo da trajetória  e seja $\vb{x}(s_0),\vb{x}(s_1)$ pontos nesse trajeto. Assim podemos definir a distancia ao longo do trajeto entre esses dois pontos por
+ 
+
+$$l(s_0,s_1)= \int_{s_0}^{s_1} \qty\big(\dv{x_i}{s}\dv{x_i}{s})^{1/2}) ds$$
+ 
+ 
+ Como $l$ foi tomado como parametro a velocidade será dada pela regra da cadeia.
+ 
+ $$\vb{v}=\dv{\vb{x}}{l}\dv{l}{t}$$
+ 
+ A primeira derivada é apenas o vetor $\vb*{\tau}$ tangente à trajetória no tempo $t$. Então $\vb{v}=\vb*{\tau}v$. E assim podemos definir agora a aceleração derivando novamente no tempo, e realizando o processo semelhantmente obtemos que
+ 
+ $$\vb{a}=\dv{\vb*{\tau}}{t}v+\vb*{\tau} \dv{v}{t}$$
+ 
+ Esse vetor está relacionado pela curvatura da trajetória. É fácil de mostrar que $\vb*{\dot{\tau}}$ é perpendicular a curva podemos então definir um novo vetor nessa direção unitário $\vb{n}=\dot{\vb*{\tau}}/|\dot{\vb*{\tau}}|$ E definindo, $\kappa= |\dv{\vb*{\tau}}{l}|$ Temos que a aceleração será dada por
+ 
+ $$\vb{a}=\kappa v^2 \vb{n}+ \ddot{l}\vb*{\tau}$$ E podemos ainda definir o vetor perpendicular a esses dois vetores unitários que é dito vetor binormal $\vb{B}$ definido pelo produto vetorial que sua derivada em relação ao comprimento do arco mede e define a torsão.
+\subsection{Principios da dinamica}
+
+Principio 1: Existe um referencial, chamado de inercial que possui as seguintes propriedades: Toda particula isolada se move em uma linha reta nesse referencial ( segue a geodesica em um espaço plano), e A noção de tempo é quantificada de tal forma que a particula isolada se move em uma velocidade constante. Principio 2: Conservação do momentum,
+
+
+
+\subsubsection{Consequencias das Equações de Newton}
+
+$$\vb{F(x,\dot{x},t)}=m\dv[2]{\vb{x}}{t}$$
+
+A solução dessa equação diferencial existe e é única,em exceção de casos especiais, dada as condições iniciais. Agora considere outro referencial que o vetor posição é $\vb{y}$. Deve existe uma transformação que relacione esses dois referenciais ( uma transformação afim).
+
+$$y_i=f_i(x,t), \quad x_i=g_i(y,t)$$
+
+Derivando no tempo temos que
+
+
+$$\dot{y}_i= \pdv{f_i}{x_j}x_j+\pdv{f_i}{t}$$
+$$ \ddot{y}_i=\pdv{f_i}{x_j}\dot{x}_j+\pdv[2]{f_i}{x_j}{x_k}\dot{x}_j\dot{x}_j+2\pdv[2]{f_i}{x_j}{t}\dot{x}_j+\pdv[2]{f_i}{t}$$
+
+Não podemos dizer nada sobre os dois sistemas de coordenada, pórem se forem cartesianos, as transformações tem de ser lineares i.e
+
+$$y_i=f_{ik} (t)x_k+b_i(t)$$
+
+Se os referenciais são inerciais eles estao se movendo em velocidade relativa constante isto nos leva ( não tão trivialmente) que $f_{ik}(t)=\phi_{ik},b_i= \beta_i t$ Então a aceleração é dada por:
+
+$$\ddot{y}_i=\phi_{ik}\ddot{x}_k$$
+
+Assim temos as relações entre os referenciais inerciais
+
+
+
+Temos agora as seguintes definições: O momento de uma partícula é definido por:
+
+$$\vb{p}=m\vb{v}$$
+
+
+Momento Angular:
+
+$$\vb{L}= \vb{x} \wedge \vb{p}$$
+$$\vb{\dot{L}}=\vb{x} \land \vb{F} \equiv \vb{N}$$
+
+
+\subsubsection{Energia e Trabalho}
+
+Se a força for uma função apenas do tempo a vetor posição pode ser escrito como
+
+$$\vb{x}=\vb{x}(t_0)+t(t_0)\vb{v}(t_0)+ \frac{1}{m} \int_{t_0}^{t}dt' \int_{t_0}^{t'}\vb{F}(t'')dt''$$
+
+Se a força for apenas função de $\vb{x}$ temos que a integral de linha da força será
+
+$$\int_{\vb{x}(t_0)}^{\vb{x}(t)} \vb{F}(\vb{x}) \vdot \dd{\vb{x}}= \frac{1}{2} m \Delta v^2$$
+
+Se a força for conservativa temos a existencia de uma função potencial $V$ que seu o negativo do seu gradiente é a força que não é unica que difere por uma constante
+
+Assim podemos definir a energia mecânica do sistema físico,
+\newpage
+
+\subsection*{Sistema de N particulas}
+
+Seja $\vb{F}_ij$ ,esse elemento é antissimetrico, a força total sobre a partícula é dada por
+
+$$m_i\vb{\ddot{x}}_i=\vb{F}_i+\sum_{j=1}^{N} \vb{F}_ij$$
+
+Poŕem se somarmos em para todas as particulas temos que
+
+$$\sum_{i}m_i \vb{\ddot{x}}=\sum_{i} \vb{F_i}=F$$
+
+E agora podemos redefinir essa equação da seguinte maneira
+
+
+$$\vb{F}=M\vb{\ddot{X}}$$
+
+O momento é definido de forma similar, e assim obtemos as variaveis dinamicas do centro de massa do sistema.
+
+\section{Formulação Lagrangiana}
+
+Os sistemas físicos agora que iremos estudar são aqueles que estão restritos a uma região espaço esses sistemas são ditos sistemas vinculados, o espaço em que ocorre o movimento essa restrição é dito a variedade de configuração $\mathbb{Q}$. Onde as nossas coordenadas serão chamadas de coordenadas generalizadas $q^\alpha$ e a quantidade delas sera o grau de liberdade do movimento que será também a dimensão de $\mathbb{Q}$.
+
+Supondo que estamos lidando com N partículas e os vínculos são dados por K equações da forma:
+
+$$f_i(\vb{x}, \dots ,\vb{x}_N,t))=0 , i=1 , \dots K <3N$$
+
+
+As funções f são supostas diferenciáveis nos seus argumentos e o parametro $t$ informa que ela varia independente do movimento das partículas. Os vinculos dados são ditos holonomos que significam integráveis. e Os não holonomos são do tipo
+
+$$f_i(\vb{x} \dots \vb{x}_N,\vb{\dot{x}}_1,\dots\vb{\dot{x}}_N,t)=0 , i=1 , \dots K <3N$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
