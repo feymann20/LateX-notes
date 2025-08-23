@@ -1,0 +1,427 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage[portuguese]{babel}
+
+\title{Notas de Mecânica Quântica}
+\author{}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Invariância de Gauge na Mecânica Quântica}
+	
+	O campo eletromagnético permite a introdução de dois potenciais que satisfazem as seguintes relações:
+	
+	$$\mathbf{E(r,t)=-\nabla U(r,t)-\partial_{t}A(r,t)}$$
+	$$\mathbf{B(r,t)=\nabla \times A(r,t)}$$
+	
+	É bem sabido que esses potenciais não são únicos e, perante as seguintes transformações, obtemos os mesmos campos.
+	
+	$$\mathbf{U'(r,t)=U(r,t)+\partial_{t}\chi(r,t)}$$
+	$$\mathbf{A'(r,t)=A(r,t)+\nabla \chi(r,t)}$$
+	
+	Essas transformações são ditas transformações de calibre (gauge) e, quando escolhemos um conjunto de potenciais específicos, dizemos que fizemos uma escolha de calibre.
+	
+	\subsection{Invariância de calibre em mecânica clássica}
+	
+	A força externa em uma partícula inserida em um campo eletromagnético é dada por:
+	
+	$$\mathbf{f}=q\left[ \mathbf{E(r,t)+v \times B(r,t)} \right] $$
+	Usando a equação de Newton, temos:
+	
+	$$\mathbf{f=}m \frac{d^{2}}{dt^{2}}\mathbf{r(t)}$$
+	Pela formulação newtoniana da mecânica clássica, apenas os campos eletromagnéticos são levados em conta, então não adentramos no caso de gauge aqui.
+	
+	Para o formalismo hamiltoniano, temos:
+	
+	$$\mathbf{\mathcal{L}(r,v;t)=} \frac{1}{2}mv^{2}-q\left[ U-v \cdot A \right]$$
+	
+	O momento canônico é:
+	
+	$$\mathbf{p}=\mathbf{mv+qA}$$
+	E o hamiltoniano associado será:
+	
+	$$\mathcal{H}(r,p,t)= \frac{1}{2m}\left[ p-qA \right]^{2}+qU $$
+	
+	As equações de Hamilton são:
+	
+	$$\frac{d}{dt}r(t)=\mathbf{\nabla _{p}\mathcal{H}}$$
+	$$\frac{d}{dt}p(t)=-\mathbf{\nabla_{r}\mathcal{H}}$$
+	Para escrever essas equações, é necessário escolher previamente um calibre $\mathcal{J}$. E se mudarmos para um calibre $\mathcal{J}'$?
+	
+	Como as equações de movimento são invariantes, o momento mecânico será o mesmo, $\pi=p-qA$.
+	
+	$$\pi'=\pi$$
+	Mas isso significa que, após algumas manipulações,
+	
+	$$\mathbf{p'=p+q\nabla \chi}$$
+	Então o momento canônico se altera por um fator.
+	
+	Portanto, isso introduz um novo conceito: quantidades não observáveis e observáveis.
+	
+	\subsection{Invariância de calibre na mecânica quântica}
+	
+	Então, temos a seguinte pergunta: será que os postulados que foram definidos valem apenas para um calibre específico?
+	
+	O espaço de estados de uma partícula é sempre $\mathcal{E}_{r}$. No entanto, podemos esperar que um operador possa ser diferente perante escolhas de calibre distintas. Esses operadores serão indexados por $\mathcal{J}$.
+	
+	Os operadores das relações fundamentais canônicas têm que se manter iguais por mudanças de calibre, então:
+	
+	$$
+	\left\{\begin{aligned}
+		\mathbf{R}_{\mathcal{J'}} &= \mathbf{R}_{\mathcal{J}} \\
+		\mathbf{P}_{\mathcal{J'}} &= \mathbf{P}_{\mathcal{J}}
+	\end{aligned}\right.
+	$$
+	O operador associado com o momento mecânico é:
+	
+	$$\mathbf{\Pi}_{\mathcal{J}}=\mathbf{P-qA(R,t)}$$
+	Para o novo calibre, temos:
+	$$\Pi_{\mathcal{J'}}=\mathbf{P-qA'(R,t)}=\Pi_{\mathcal{J}}-q\nabla \chi(R,t)$$
+	E, similarmente, o operador momento mecânico angular também, pois depende do momento mecânico.
+	
+	Agora, o operador hamiltoniano será:
+	
+	$$\mathcal{H}_{\mathcal{J}}= \frac{1}{2m}\left[ \mathbf{P}-q\mathbf{A(R,t)} \right]^{2}+qU(\mathbf{R},t) $$
+	E, claro, se o calibre se alterar, o operador também se altera.
+	
+	Os valores esperados dos operadores $\mathbf{R,P}$ retornarão o caso clássico, então:
+	
+	$$\braket{ \psi',t |R_{\mathcal{J'}}|\psi',t  } = \braket{ \psi,t |R_{\mathcal{J}}|\psi,t  }$$
+	$$\braket{ \psi',t |P_{\mathcal{J'}}|\psi',t  } = \braket{ \psi,t |P_{\mathcal{J}}+q\nabla \chi(\mathbf{R},t)|\psi,t  }$$
+	Isso só vale se os kets forem distintos. Então, propomos um operador unitário $T_{\chi}(t)$ que os relaciona: $\ket{\psi',t}=T_{\chi}\ket{\psi,t}$.
+	
+	Com essa definição, temos as seguintes relações:
+	
+	$$T^{\dagger}RT=R  \implies T=e^{iF(R,t)}$$
+	$$T^{\dagger}PT=P+q\nabla \chi(R,t)$$
+	Sabendo que $\left[ P, T\right]= \hbar{ \nabla F(R,t)}T_{\chi}$, substituindo, ficamos com:
+	
+	$$\hbar \nabla F=q \nabla \chi$$
+	$$F=F(0,t)+\frac{q}{\hbar}\chi$$
+	Então, o operador é dado por:
+	
+	$$T_{\chi}(t)=e^{i\frac{q}{\hbar}\chi(R,t)}$$
+	Agora, iremos averiguar a evolução temporal do vetor de estado.
+	
+	$$i\hbar d_{t}\ket{\psi,t}=H_{\mathcal{J}}(t)\ket{\psi,t}  $$
+	E o vetor de estado em outro calibre satisfaz outra equação no calibre $\mathcal{J'}$:
+	
+	$$i\hbar d_{t}\ket{\psi',t}=H_{\mathcal{J'}}(t)\ket{\psi',t}  $$
+	$$i\hbar d_{t}(T_{\chi}\ket{\psi,t})=-q\partial_{t}\chi(\mathbf{R},t)T_{\chi}\ket{\psi,t}+T_{\chi}H_{\mathcal{J}}\ket{\psi,t}$$
+	Isso implica que:
+	
+	$$\left\{ -q \partial_{t}\chi(\mathbf{R},t)+\tilde{H}_{\mathcal{J}}(t)  \right\}\ket{\psi',t} =H_{\mathcal{J'}}\ket{\psi',t}  $$
+	Portanto,
+	
+	$$H_{\mathcal{J'}}=\tilde{H}_{\mathcal{J}}-q \partial_{t}\chi(\mathbf{R},t)$$
+	
+	\section{Operador de Evolução}
+	
+	Tendo aprendido os principais resultados obtidos da equação de Schrödinger no caso do Hamiltoniano independente do tempo, temos a seguinte relação:
+	$$\ket{\psi,t} =U(t,t_{0})\ket{\psi,t_{0}} $$
+	A partir dessa definição, podemos buscar certas propriedades desse operador.
+	
+	Vemos que, pela definição, temos:
+	$$\ket{\psi,t_{0}}=U(t_{0},t_{0})\ket{\psi,t_{0}} \implies U(t_{0},t_{0})=I$$
+	Agora, indo para a equação de Schrödinger, temos:
+	
+	$$i\hbar \partial_{t} U(t,t_{0})\ket{\psi,t_{0}} =HU(t,t_{0})\ket{\psi,t_{0}} $$
+	Como isso vale para qualquer ket, temos a seguinte equação diferencial de operadores:
+	
+	$$i\hbar \partial_{t}U(t,t_{0})=HU(t,t_{0})$$
+	Integrando os dois lados entre $t_0$ e $t'$, temos:
+	
+	$$i\hbar  \int_{t_{0}}^{t'}\partial_{t}U(t,t_{0})dt=i\hbar(U(t',t_{0})-I)=\int_{t_{0}}^{t'} dt\,HU(t,t_{0})$$
+	Então, o operador de evolução $U$ será dado pela seguinte equação integral:
+	
+	$$U(t',t_{0})=I-\frac{i}{\hbar}\int ^{t'}_{t_{0}}HU(t,t_{0})dt$$
+	Se $H$ for independente do tempo, temos um caso mais simples. A primeira equação terá uma solução mais simples, dada por:
+	
+	$$U(t,t_{0})=e^{\frac{i}{\hbar}(H(t-t_{0}))}$$
+	As principais propriedades do operador de evolução temporal são:
+	
+	$$\ket{\psi,t}=U(t,t') \ket{\psi,t'}=U(t,t')U(t',t'')\ket{\psi,t''}  $$
+	Logo,
+	$$U(t,t'')=U(t,t')U(t',t'') $$
+	Seja para uma partição temporal ordenada:
+	$$U(t_{n},t_{1})=U(t_{n},t_{n-1})..U(t_{3},t_{2})U(t_{2},t_{1}) $$
+	Se fizermos, por exemplo,
+	$$U(t,t)=I=U(t,t')U(t',t)$$
+	Então,
+	$$U(t',t)=U^{-1}(t,t')$$
+	O operador de evolução temporal é unitário, pois a probabilidade se conserva no tempo:
+	$$1=\braket{ \psi ,t_{0} | \psi,t_{0} }=\braket{ \psi,t |U^{\dagger}(t_{0},t)U(t_{0},t)|\ket{\psi,t}    } \implies U^{\dagger}U=I    $$
+	Se definirmos o operador de evolução temporal e o expandirmos em série até a primeira ordem, teremos:
+	$$U(t+dt,t)=I+\Omega dt  $$
+	e seu adjunto:
+	$$U^{\dagger}(t+dt,t)=I+\Omega ^{\dagger} dt$$
+	Usando o fato de que esse operador é unitário:
+	
+	$$U^{\dagger}U=(I+\Omega dt)(I+\Omega ^{\dagger}dt)=I+(\Omega+\Omega ^{\dagger})dt+O(dt^{2})$$
+	Isso implica que os geradores do grupo de operadores de evolução são anti-adjuntos. Podemos, então, definir sem perda de generalidade que eles são $\Omega =iG$, sendo que $G$ é auto-adjunto.
+	O gerador de evolução temporal, que na mecânica clássica é o hamiltoniano, pode ser mostrado pela equação de Schrödinger que equivale a: $\ket{\psi,t+dt}-\ket{\psi,t}=-\frac{i}{\hbar}Hdt\ket{\psi,t}$.
+	
+	Então,
+	$$U(t+dt,t)=I-\frac{i}{\hbar}H(t)dt$$
+	
+	\section{Operador Densidade}
+	
+	Até o momento, lidamos com sistemas em que os estados são perfeitamente conhecidos. Para determinar um sistema, é necessário realizar diversas medidas correspondentes a um Conjunto Completo de Observáveis que Comutam (C.S.C.O.). Mas, em situações como luz não polarizada ou átomos provenientes de um forno a uma temperatura $T$, a informação é imperfeita. Para lidar com essa informação imperfeita nos sistemas quânticos, será necessário um operador que nos guie nesse problema, o operador densidade.
+	
+	\subsection{O conceito de misturas estatísticas de estados}
+	
+	A descrição de um vetor de misturas de estados é dada por:
+	$$\ket{\psi}=\sum_{k=1}^{\infty} c_{k}\ket{\psi_{k}}   $$
+	Quando temos uma informação incompleta sobre um sistema, podemos recorrer a um conceito probabilístico. Mais geralmente, a informação incompleta que possuímos sobre o sistema apresenta-se na mecânica quântica da seguinte forma: o estado pode ser $\ket{\psi_{1}}$ com probabilidade $p_{1}$, ou estado $\ket{\psi_{2}}$ com $p_{2}$, ou mais geralmente, uma soma de probabilidades que totaliza 1:
+	
+	$$\sum_{k=1}^{} p_{k}=1$$
+	
+	Para a descrição por um vetor de estado puro, considere:
+	
+	$$\ket{\psi,t}=\sum_{i=1}^{\infty} c_{n}(t)\ket{u_{n}}   $$
+	e também sabemos que:
+	$$\sum_{n} |c_{n}(t)|^{2}=1$$
+	Se $A$ for um observável com $\braket{ u_{n} |A |u_{p} }=A_{np}$, o valor esperado de $A$ é:
+	$$\braket{  A  } (t)=\braket{ \psi,t |A|\psi,t  }=\sum_{n,p}c^{*}_{n}(t)c_{p}(t)A_{np} $$
+	Para a descrição por um operador densidade, podemos simplificar esse valor esperado:
+	$$c^{*}_{n}(t)c_{p}(t)=\braket{ \psi  |u_{n}  } \braket{ u_{p} |\psi  } $$
+	Podemos associar a um operador $\rho  =\ket{\psi} \bra{\psi}$, o projetor $\ket{\psi,t} \bra{\psi,t}$. Os elementos da sua matriz em uma dada base discreta serão então $\rho_{np}=c_{n}^{*}(t)c_{p}(t)$. Ele será chamado de operador densidade $\rho(t)$, terá traço igual a 1, e o valor esperado de $A$ será:
+	$$\braket{  A  } (t)=\sum_{n,p}c^{*}_{n}(t)c_{p}(t)A_{np} =\sum_{np} \rho_{np}A_{np}=Tr(\rho(t)A)$$
+	Podemos também derivar o operador em relação ao tempo:
+	$$\frac{d}{dt}\rho(t)=\frac{d}{dt}(\ket{\psi,t}) \bra{\psi,t} +\ket{\psi,t} \frac{d}{dt}(\bra{\psi,t}) $$
+	Substituindo a equação de Schrödinger, temos:
+	$$\frac{d}{dt}\rho=\frac{1}{i\hbar}[H,\rho] $$
+	Como foi postulado anteriormente, a probabilidade de encontrar um autovalor $a_{n}$ de um sistema puro é:
+	
+	$$\mathcal{P}(a_{n})=\braket{ \psi,t |P_{n}|\psi,t  } =Tr\left\{ \rho P_{n} \right\} $$
+	Onde $P_{n}$ é o projetor do autoespaço gerado pelos autovetores do autovalor $a_{n}$.
+	
+	Para o caso de uma mistura de estados, temos:
+	
+	$$\mathcal{P(a_{n})=\sum_{k}p_{k}\mathcal{P_{k}(a_{n})}}=\sum_{k} p_{k}Tr\left\{ \rho_{k}P_{n} \right\}=Tr\left\{ \rho P_{n} \right\}  $$
+	Onde definimos
+	$$\rho=\sum_{k}p_{k}\rho_{k}; \quad \rho_{k}=\ket{\psi_{k}} \bra{\psi_{k}} $$
+	E o valor esperado de um operador pode ser escrito como:
+	
+	$$\braket{  A  } =\sum a_{n}\mathcal{P(a_{n})}=Tr\left\{ \rho A \right\}  $$
+	Populações e coerência: O significado físico dos coeficientes do operador são esclarecidos a seguir:
+	
+	$$\rho_{nn}=\sum_{k}p_{k}[\rho_{k}]_{nn}$$
+	$$\rho_{np}=\sum_{k}p_{k}c^{*}_{p}c_{n} $$
+	Isso é uma média de valores que avaliam a probabilidade de encontrar um estado. Os termos mistos são termos de interferência. Quando os termos mistos são nulos, os estados são ditos incoerentes, e os termos da diagonal medem a probabilidade do estado ser medido se não houvesse interferência.
+	
+	Como esse operador é hermitiano e é diagonalizável, podemos escrevê-lo como:
+	
+	$$\rho=\sum_{l}\pi_{l}\ket{\chi_{l}} \bra{\chi_{l}} $$
+	O traço do operador é 1 e possui autovalores positivos. Supondo que $\ket{u_{n}}$ é um autovetor de $H$ e usando a relação da derivada temporal do operador densidade, temos então:
+	
+	$$i\hbar d_{t} \rho_{np}(t)=\left[ H,\rho_{np} \right]=(E_{n}-E_{p})\rho_{np}$$
+	Para termos de índices iguais, eles serão constantes. Para termos mistos, teremos uma equação diferencial cuja solução é dada por:
+	
+	$$\rho_{np}(t)=\rho_{np}(0)e^{-\frac{i}{\hbar}\left( E_{n}-E_{p} \right) }$$
+	
+	\section{Oscilador Harmônico Unidimensional}
+	
+	Na mecânica clássica, temos o oscilador harmônico usual, dado pelo potencial $V(x)=\frac{1}{2}kx^{2}$.
+	A energia total é:
+	
+	$$E=T+V=\frac{1}{2}m\dot{x}^{2}+\frac{1}{2}kx^{2}$$
+	Onde $x(t)=A\cos(\omega t-\phi)\quad \dot{x}(t)=-A\omega \sin(\omega t+\phi)$.
+	
+	A energia é dada por: $$E=\frac{1}{2}mA^{2}\omega^{2}\sin ^{2}(\omega t +\phi)+\frac{1}{2}\omega^{2}mA^{2}\cos ^{2}(\omega t+\phi)=\frac{1}{2}m\omega^{2}A^{2}$$
+	Agora, considere um potencial que possua um mínimo em $x_{0}$ e que possa ser expandido em uma série de Taylor:
+	
+	$$V(x)=a+V'b(x-x_{0})+\frac{V''}{2!}(x-x_{0})^{2}+\dots$$
+	Sendo que essas derivadas são avaliadas em $x=x_{0}$. Como é um mínimo, $V'(x_{0})=0$.
+	Truncando a série até a ordem 2, temos:
+	
+	$$V(x)=a+\frac{V''}{2!}(x-x_{0})^{2}+\dots$$
+	Como um potencial é equivalente ao outro se houver uma diferença por constantes, o potencial será realmente dado dessa maneira.
+	Montando a segunda lei de Newton, a frequência angular será:
+	
+	$$\omega =\sqrt{ \frac{1}{m}V''(x_{0}) }$$
+	\subsection{Sistema Quântico}
+	
+	Agora, iremos quantizar esse hamiltoniano, substituindo as quantidades por operadores.
+	
+	$$
+	H=\frac {P^{2}}{2m}
+	+\frac{1}{2}m\omega^{2}X^{2}
+	$$
+	Como esse hamiltoniano não depende explicitamente do tempo, é um sistema conservativo, então:
+	
+	$$H\ket{\phi}=E\ket{\phi}  $$
+	Na representação das posições, temos:
+	
+	$$(-\frac{\hbar^{2}}{2m} \frac{d^{2}}{dx^{2}}+\frac{1}{2}m\omega^{2}x^{2})\phi(x)=E\phi(x)$$
+	\subsubsection{Autovalores do Hamiltoniano}
+	Os autovalores do operador hamiltoniano são positivos, pois o potencial possui um limite inferior e os autovalores do hamiltoniano são sempre maiores que esse valor, que é positivo.
+	
+	Definimos os seguintes operadores adimensionais:
+	$$
+	\begin{aligned}
+		\hat{X}&=\sqrt{ \frac{m\omega}{\hbar} }X \\
+		\hat{P}&=\frac{1}{\sqrt{ m\hbar \omega  }}P
+	\end{aligned}
+	$$
+	Com a motivação para fatorar o operador hamiltoniano. Se fizermos a substituição, teremos $\hat{H}=\frac{1}{\hbar \omega}H$.
+	
+	A nova equação se torna:
+	
+	$$\hat{H}=\frac{1}{2}(\hat{P}^{2}+\hat{X}^{2})$$
+	Com esses operadores, podemos definir uma complexificação da álgebra:
+	
+	$$
+	\begin{aligned}
+		a&=\frac{1}{\sqrt{ 2 }}(\hat{X}+i\hat{P}) \\
+		a^{\dagger}&=\frac{1}{\sqrt{ 2 }}(\hat{X}-i\hat{P})
+	\end{aligned}
+	$$
+	A relação de comutação entre eles é dada por $\left[ a ,a^{\dagger}\right]=1$. Podemos observar que $\hat{H}=a^{\dagger}a+\frac{1}{2}=N+\frac{1}{2}$, sendo $N=a^{\dagger}a$. Ele é um operador hermitiano.
+	Os autovetores de N são os autovetores de $\hat{H}$. A relação de comutação de N com os operadores $a$ é:
+	$$
+	\begin{aligned}
+		\left[ N,a \right]&=-a \\
+		\left[ N ,a^{\dagger}\right]&=a^{\dagger}  
+	\end{aligned}
+	$$
+	Estamos interessados em analisar a equação: $N\ket{\phi^{i}_{\nu}}=\nu \ket{\phi^{i}_{\nu}}$, com a relação direta com o Hamiltoniano adimensional dado por $\hat{H}\ket{\phi^{i}_{\nu}}=\left( \nu+\frac{1}{2} \right)\ket{\phi^{i}}_{\nu}$.
+	A relação com o hamiltoniano é só multiplicar por $\hbar \omega$.
+	
+	Vamos estudar as propriedades do espectro do operador $N$ para usar a equação que realmente tem valor físico:
+	$$H\ket{\phi^{i}_{\nu}} =\left( \nu +\frac{1}{2} \right)\hbar \omega \ket{\phi^{i}_{\nu}} $$
+	\textbf{Lemma 1}: Os autovalores $\nu$ de N são positivos ou zero.
+	$$||a\ket{\phi^{i}_{\nu}}||^{2}=\bra{\phi^{i}_{\nu}}a^{\dagger}a|\ket{\phi^{i}_{\nu}}=\bra{\phi^{i}_{\nu}}N\ket{\phi^{i}_{\nu}}=\nu\braket{\phi^{i}_{\nu}|\phi^{i}_{\nu}}\geq 0    $$
+	Como a norma de um vetor é sempre maior ou igual a zero, temos então que $\nu \geq 0$.
+	
+	\textbf{Lema}: Se $\nu>0$, o ket $a\ket{\phi^{i}_{\nu}}$ é um autovetor não-nulo de $N$ com autovalor $\nu-1$.
+	$$Na\ket{\phi^{i}_{\nu}}=aN\ket{\phi^{i}_{\nu}}+\left[ N,a \right]\ket{\phi^{i}_{\nu}} =aN\ket{\phi^{i}_{\nu}}-a\ket{\phi^{i}_{\nu}}=(\nu-1)a\ket{\phi^{i}_{\nu}}      $$
+	
+	\textbf{Lema}: $a^{\dagger}\ket{\phi^{i}_{\nu}}$ é sempre não-nulo e é um autovetor de N com autovalor $\nu+1$.
+	$$||a^{\dagger}\ket{\phi^{i}_{\nu}}||^{2}=\bra{\phi^{i}_{\nu}}aa^{\dagger}\ket{\phi^{i}_{\nu}}=\braket{ \phi^{i}_{\nu} |N+1|\phi^{i}_{\nu}  }=(\nu+1)\braket{ \phi^{i}_{\nu} | \phi^{i}_{\nu} }       $$
+	Como essa norma é sempre diferente de 0, a primeira parte do lema foi provada.
+	
+	Para a segunda parte,
+	$$Na^{\dagger}\ket{\phi^{i}_{\nu}}=a^{\dagger}\ket{\phi^{i}_{\nu}}+a^{\dagger}N\ket{\phi^{i}_{\nu}}=(\nu+1)a^{\dagger}\ket{\phi^{i}_{\nu}}    $$
+	Q.E.D.
+	
+	O próximo interesse é saber a topologia do espectro, se são compostos por inteiros, naturais ou complexos. A demonstração de que são números inteiros positivos é um extenso argumento por contradição que não será detalhado aqui.
+	
+	Assim, concluímos que os autovalores do hamiltoniano, ou seja, a energia do sistema, são quantizados e dados por:
+	$$E_{n}=\left( n+\frac{1}{2} \right)\hbar \omega$$
+	
+	\section{Postulados da Mecânica Quântica}
+	
+	\subsection{Introdução}
+	Na mecânica clássica, um sistema pode ser bem conhecido sabendo de duas informações: suas coordenadas generalizadas $q^{i}(t)$ e seu momento generalizado $p^{i}(t)$. Esse par forma um conjunto de pontos no espaço de fase, e o sistema é descrito pelas equações de Hamilton ou de Lagrange, $\mathcal{L}=T-U$ ou $\mathcal{H}=<p, \dot{q}>-\mathcal{L}$.
+	
+	No cenário clássico, temos as equações de Hamilton:
+	$$\partial_{p} \mathcal{H}=\dot{q}$$
+	$$\partial _{q}\mathcal{H}=-\dot{p}$$
+	A energia do sistema é a soma da energia cinética com a energia potencial.
+	
+	As seguintes perguntas são feitas: Como o estado de um sistema quântico é formulado? Podemos prever informações de quantidades medidas a partir do estado conhecido? Como ocorre a evolução temporal do estado?
+	
+	\textbf{Primeiro Postulado}: Em um tempo fixo $t_{0}$, o estado de um sistema físico é definido especificando o vetor de estado $\ket{\psi(t_{0})}$, que pertence ao espaço de estados $\mathcal{E}$.
+	Em outras palavras, a função de onda $\psi(r,t_{0})$ é a representação do estado no espaço das posições, e essa função representa o estado físico. Como este é um espaço vetorial, este postulado nos leva ao princípio de superposição.
+	
+	\textbf{Segundo Postulado}: Toda quantidade física mensurável $\mathcal{A}$ é descrita por um operador linear $A$ que age no espaço de estados; esse operador é um observável.
+	
+	\textbf{Terceiro Postulado}: Os únicos possíveis resultados de uma medição de uma quantidade física $\mathcal{A}$ são os autovalores do operador linear $A$ que representa essa quantidade.
+	
+	\subsection{Princípio de decomposição espectral}
+	
+	\textbf{Espectro Discreto}:
+	Assumindo que o operador linear $A$ possui um espectro que é um conjunto enumerável, e se todos os autovalores $a_{n}$ forem não degenerados:
+	
+	$$A \ket{u_{n}}=a_{n}\ket{u_{n}}  $$
+	$A$ é um observável, então o conjunto de autovetores gera o espaço de estados, e obviamente:
+	$$\ket{\psi}=\sum c_{n}\ket{u_{n}}$$
+	A probabilidade de encontrar o autovalor $a_{n}$ de $\mathcal{A}$ é dada pela norma ao quadrado do estado projetado no subespaço gerado pelo conjunto de vetores com autovalor $a_{n}$. Para o caso não degenerado, temos apenas um autovetor, portanto, a probabilidade é $\mathcal{P(a_{n})}=|c_{n}|^{2}$.
+	No caso em que o autovalor é degenerado, temos: $A\ket{u^{i}_{n}}=a_{n}\ket{u^{i}_{n}}$, sendo que $i$ indexa a degenerescência. A expansão será:
+	$$\ket{\psi}=\sum_{n}\sum ^{g_{n}}_{i}c^{i}_{n}\ket{u^{i}_{n}}  $$
+	A probabilidade de encontrar o autovalor $a_n$ é a norma da projeção do estado no subespaço de $a_n$, dada por $\mathcal{P}(a_{n})=\sum ^{g_{n}}_{i}|\braket{ u_{n}^{i} |\psi }|^{2}$.
+	
+	\textbf{Quarto Postulado}: Quando uma quantidade física $\mathcal{A}$ é medida em um estado normalizado $\ket{\psi}$, a probabilidade de medir o autovalor $a_{n}$, $\mathcal{P}(a_{n})$, é:
+	
+	$$\mathcal{P}(a_{n})=\sum ^{g_{n}}_{i}|\braket{ u^{i}_{n} |\psi  }|^{2} $$
+	Sua versão contínua é uma extensão análoga.
+	
+	\textbf{Redução do pacote de onda}: Depois de uma medição de uma quantidade física que resultou em um autovalor $a_{n}$, postula-se que o estado do sistema logo após a medição é o autovetor $\ket{u_{n}}$.
+	A função de onda após uma medição deve ser:
+	
+	$$\ket{\psi}\implies \frac{1}{\sqrt{ \sum ^{g_{n}}_{i} |c^{i}_{n}|^{2}}}\sum ^{g_{n}}_{i}c^{i}_{n}\ket{u^{i}_{n}}  $$
+	Isso é a projeção da função de onda no autoespaço (eigenspace) formado pelos autovetores associados ao autovalor $a_{n}$, com uma normalização.
+	
+	\textbf{Quinto Postulado}: Se uma medição de uma quantidade física $\mathcal{A}$ de um sistema em um estado $\ket{\psi}$ resulta em $a_{n}$, o estado do sistema imediatamente após a medição é a projeção normalizada no auto subespaço de $a_{n}$.
+	
+	\textbf{Sexto Postulado}: A evolução temporal do vetor de estado $\ket{\psi(t)}$ é governada pela equação de Schrödinger:
+	$$i\hbar \frac{d}{dt}\ket{\psi(t)}=H(t)\ket{\psi(t)}  $$
+	Onde $H(t)$ é um observável associado à energia do sistema.
+	
+	\subsection{Regras de Quantização}
+	
+	Uma quantidade física $\mathcal{A}(\mathbf{r,p},t)$ é medida classicamente. Podemos simplesmente substituir as quantidades por operadores respectivos, então $A(t)=\mathcal{A}(\mathbf{R,P},t)$. Mas existem problemas, pois os operadores em geral não comutam. É necessário, por este método de quantização, realizar uma simetrização, por exemplo:
+	$$\frac{1}{2}(\mathbf{R\cdot P}+\mathbf{P\cdot R})$$
+	Este operador é hermitiano, então pode ser um observável. O valor médio de um observável em um estado é:
+	$$\langle A \rangle_{\psi}=\frac{\bra{\psi}A\ket{\psi}}{\braket{ \psi |\psi  } } $$
+	O valor esperado de um operador é igual a:
+	$$\langle A \rangle_{\psi}=\sum_{n}a_{n}\mathcal{P}(a_{n})$$
+	Em forma contínua, temos uma expressão análoga.
+	
+	\subsubsection{Desvio quadrático médio}
+	
+	Estamos interessados em quão as medições das quantidades físicas variam. Resgatamos uma quantidade estatística para auxiliar a teoria:
+	$$\Delta A^{2}= \langle (A- \langle A\rangle)^{2}\rangle$$Expandindo, temos:$$\Delta A^{2}= \langle (A- \langle A\rangle)^{2}\rangle= \left< A^{2} \right>-\left< A \right>^{2}$$Portanto, o desvio quadrático médio de um operador é dado por:$$
+	\Delta A=\sqrt{ \left< A^{2} \right>-\left< A \right>^{2}   }
+	$$
+	
+	\subsection{Observáveis Compatíveis}
+	
+	Seja dois operadores que comutam, $\left[ A,B \right]=0$, e assumindo que ambos os espectros são completamente discretos, existe uma base de estados em comum de $A$ e $B$ denotada por $\ket{a_{n},b_{p},i}$.
+	$$
+	\begin{aligned}
+		A\ket{a_{n},b_{p},i}&=a_{n}\ket{a_{n},b_{p},i} \\ 
+		B\ket{a_{n},b_{p},i}&=b_{p}\ket{a_{n},b_{p},i}
+	\end{aligned}
+	$$Existe ao menos um autovetor que sempre resultará em $a_{n}$ ou $b_{p}$. Esses operadores são ditos compatíveis, pois podemos determinar simultaneamente as duas quantidades físicas associadas. Podemos expandir um estado:$$
+	\ket{\psi}=\sum_{n,p,i}c_{n,p,i}\ket{a_{n},b_{p},i} 
+	$$A probabilidade de encontrar o valor $a_{n}$ e depois $b_{p}$ é:$$
+	\mathcal{P}(a_{n},b_{p})=\mathcal{P}(a_{n}) \times \mathcal{P}_{a_{n}}(b_{p})=\sum_{i}|c_{n,p,i}|^{2}
+	$$
+	A pergunta "e se alterarmos a ordem das medidas?" é feita. A função de onda resultante é a mesma, por isso os operadores são ditos compatíveis.
+	
+	\subsection{Propriedades das equações de Schrödinger}
+	
+	$$i\hbar \frac{d}{dt}\ket{\psi(t)}=H(t)\ket{\psi(t)}  $$
+	Se não houverem medidas, o sistema evolui de acordo com essa equação. A norma se conserva no tempo:
+	$$\frac{d}{dt}\braket{ \psi(t) |\psi(t)  }=0$$
+	\textbf{Conservação Local de Probabilidade}:
+	O operador hamiltoniano é $H= \frac{\mathbf{P}^{2}}{2m}+V(\mathbf{R},t)$, e a equação de Schrödinger na representação de $\ket{\mathbf{r}}$ é:
+	$$i\hbar \frac{\partial}{\partial t}\psi(\mathbf{r},t)=-\frac{\hbar^{2}}{2m}\nabla^{2}\psi(\mathbf{r},t)+V(\mathbf{r},t)\psi(\mathbf{r},t)$$
+	Isso leva à equação de continuidade:
+	$$\partial_{t}\rho(\mathbf{r},t)+\nabla \cdot\,\mathbf{J}(\mathbf{r},t)=0$$
+	Onde $\mathbf{J}=\frac{\hbar}{2mi}\left[ \psi^{*}\nabla \psi-\psi \nabla \psi^{*} \right]$.
+	A evolução temporal do valor esperado de um operador é:
+	$$\frac{d}{dt}\left< A \right> = \frac{1}{i\hbar}\left< \left[ A,H(t) \right]  \right>+\partial_{t}A  $$
+	Se essa quantidade for 0, ela se conserva no tempo.
+	
+	\textbf{Solução da equação de Schrödinger}:
+	Assumindo que o operador hamiltoniano possui espectro discreto, a equação de autovalores e autovetores é:
+	$$H\ket{\phi_{n,\tau}}=E_{n}\ket{\phi_{n,\tau}}  $$
+	Como $H$ é auto-adjunto, o conjunto $\left\{ \phi_{n,\tau} \right\}$ gera o espaço de estados, portanto:
+	$$\ket{\psi(t)}=\sum_{n,\tau} c_{n,\tau}(t)\ket{\phi_{n,\tau}}  $$
+	Aplicando isso na equação de Schrödinger, temos uma EDO para os coeficientes $c_{n,\tau}(t)$:
+	$$i\hbar \frac{d}{dt}c_{n,\tau}(t)=E_{n}c_{n,\tau}(t)$$
+	A solução dessa EDO é:
+	$$c_{n,\tau}(t)=c_{n,\tau}(t_{0})e^{-\frac{i}{\hbar}E_{n}(t-t_{0})}$$
+	Para o caso contínuo, a solução é análoga.
+	
+\end{document}

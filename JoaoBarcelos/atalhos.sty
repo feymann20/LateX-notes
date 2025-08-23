@@ -1,0 +1,38 @@
+\ProvidesPackage{meuestilo}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[a4paper, total={16cm, 24cm}, left=2.5cm, top=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[style=numeric, backend=biber]{biblatex}
+\addbibresource{references.bib}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue,
+    urlcolor=blue,
+    %bookmarks=true,
+    %bookmarksopen=true,
+    %bookmarksnumbered=true
+}
+\usepackage{cleveref}
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Teorema}[chapter]
+%\newtheorem{corollary}[theorem]{Corolário}
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definição}[chapter]
+%\theoremstyle{remark}
+%\newtheorem{remark}{Nota}[chapter]
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+

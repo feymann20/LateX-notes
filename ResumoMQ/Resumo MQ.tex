@@ -1,104 +1,181 @@
 \documentclass{article}
 \usepackage{meuestilo}
-\title{MecânicaQuântica}
-\author{Natã}
+\title{Mecânica Quântica}
+\author{Natã Hora}
+\date{}
+
 \begin{document}
+	
 	\maketitle
-	\section{Introdução}
-	Os fenômenos da mecânica quântica foram bem descritos utilizando o formalismo da álgebra linear, com a observações: Os operadores que representam quantidades físicas mensuráveis são hermitianos e seus autovalores são os possíveis valores medidos em laboratório. Dessa forma, formalismo da mecânica quântica começa com a promoção das quantidades físicas a operadores em um espaço vetorial de funções. Seja \(\mathcal{Q}\) uma quantidade física essa quantidade na mecânica quântica será representada por um operador \(Q\). E os nossos objetos de interesse que descrevem as amplitudes de probabilidade são as funções de onda \(\psi(\bf{r}) \in \cal{E}\), onde \(\cal{E}\) é o espaço de estados. Esse é um espaço dotado do produto interno.
 	
-	\[\braket{\psi,\phi}:= \int_{\mathbb{R}^3}d^3r \,\psi^*\phi\]
+	\section{Formalismo Hamiltoniano}
 	
+	Partindo do formalismo lagrangiano da mecânica clássica temos que a ação é um funcional definido da seguinte forma:
 	
+	$$ S\qty[q,\dot{q},t]= \int_{t_1}^{t_2}L(q,\dot{q},t) dt$$
 	
-	E esse espaço equipado com esse produto interno será completo e dessa forma será dito um espaço de Hilbert. Como esse espaço é de dimensão infinita podemos expressar nossas funções de onda como
+	Onde a função $L(q,\dot{q},t)$ é dita lagrangiana e $q(t)$ é uma curva parametrizada no espaço. Existe um interesse em buscar em quais curvas esse funcional é minimizado, podemos buscar uma noção de derivada para esse funcional, dita derivada funcional.
+	$$ \lim_{\epsilon \to 0}\frac{S\qty[q+\epsilon v]-S\qty[q]}{\epsilon}= \int dt \frac{\delta S}{\delta q} v$$
 	
-	\[\psi(\mathbf{r})=\sum_i ^\infty c_i u_i(r), \quad \text{tal que} \quad c_i=\braket{u_i,\psi}\]
-	Sendo que o conjunto \(\{u_i\}\) é um conjunto de vetores ortogonais e está indexado por um conjunto enumerável, que gera os vetores do espaço vetorial, sendo que esta ultima característica é chamada de completude. Assim os conjuntos que respeitam essas propriedades irei conotar-los por bases discretas e os conjuntos não são enumeráveis serão ditos bases contínuas. Agora apresento a seguinte notação que será muito útil que é conhecida como notação de Dirac.
+	Os intervalos de integração serão omitidos e somente serão expostos quando houver necessidade. A variação na curva possui o requerimento usual de ser nula nas extremidades do intervalo. Dessa forma, realizando as devidas operações e expandindo à primeira ordem, temos:
 	
-	Seja a expansão de uma função de onda em uma base discreta.
+	\begin{equation*}
+		\delta S = \epsilon \int dt \qty(\pdv{L}{q}v + \pdv{L}{\dot{q}}\dot{v}) = \epsilon \int dt \qty(\pdv{L}{q}- \dv{t}\pdv{L}{\dot{q}})v
+	\end{equation*}
 	
-	\[\psi=\sum \braket{u_i,\psi} u_i\] 
+	Onde foi assumido que as funções de teste são nulas no contorno. Então, a derivada funcional da ação é:
 	
-	Podemos motivados por essa notação de produto interno definir que os elementos do espaço vetorial são denotados por \(\ket{\psi}\) e os covetores por \(\bra{\psi}\). Então essa equação se torna
+	$$\frac{\delta S}{\delta q}=\pdv{L}{q}- \dv{t}\pdv{L}{\dot{q}}$$
 	
-	\[\ket{\psi}=\sum \braket{u_i|\psi} \ket{u_i}=\sum c_i \ket{u_i}\]
-	\section{Formulando a Dinâmica do formalismo}
-	A seguinte pergunta pode ser feita no presente momento:"Como o estado de um sistema quântica é formulado?, Qual é a equação dinâmica do formalismo?". Dessa forma pode-se com base em experimentos postular que: \(i)\)Em um tempo fixo \(t_0\) o estado de um sistema físico é definido conhecendo \(\ket{\psi(t_0)} \in \mathcal{E}\). \(ii)\) Toda quantidade física mensurável $\mathcal{Q}$ é descrita por um operador linear hermitiano e observável $A$ agindo no espaço de estados.$iii)$ Os únicos possíveis resultados de uma medição de $\mathcal{Q}$ são os autovalores do operador linear $Q$.$iv)$ Quando uma quantidade física é medida em um estado normalizado a probabilidade de medir o autovalor digamos \(a_n\) será dada por:
+	\newpage
+	Se buscamos os caminhos que extremizam essa ação, teremos que esse termo será nulo. Para encontrar os caminhos de mínima ação partimos de um postulado: As soluções das equações de Euler-Lagrange são aquelas que minimizam a ação. Também podemos formular uma mecânica a partir da transformada de Legendre da lagrangiana $H:= \pdv{L}{\dot{q}} \dot{q} - L$, o momento conjugado é definido como $p:= \pdv{L}{\dot{q}}$. Então temos que esse objeto chamado Hamiltoniana será dado por:
+	
+	$$H= pq -L$$
+	
+	Então, podemos reescrever a ação como:
+	
+	$$S[q,p,t]= \int dt \, (p\dot{q}-H)$$
+	
+	E, realizando a variação funcional e requerindo que ela seja nula, teremos que:
+	
+	$$ \delta S = \int dt \, (\delta p \dot{q} + p \delta \dot{q} - \pdv{H}{q}\delta q - \pdv{H}{p}\delta p) = 0$$
+	
+	E a condição de ser nula nos leva às seguintes duas equações:
+	
+	\begin{align*}
+		\dot{p}&=-\pdv{H}{q}\\
+		\dot{q}&=\pdv{H}{p}
+	\end{align*}
+	
+	Essas são as equações canônicas de Hamilton.
+	
+	Agora podemos conhecer como os observáveis mudam ao longo do tempo. Seja $A(q,p,t)$ um observável que dependa dessas variáveis, a sua derivada temporal total se torna:
+	
+	$$\dv{t} A=\pdv{A}{q}\dot{q}+\pdv{A}{p}\dot{p}+\pdv{A}{t}$$
+	
+	Mas nós conhecemos essas derivadas temporais devido às equações de Hamilton, então, substituindo, teremos que:
+	
+	$$\dv{t} A=\pdv{A}{q}\pdv{H}{p}-\pdv{A}{p}\pdv{H}{q}+\pdv{A}{t}$$
+	
+	E definindo agora o que será dito parênteses de Poisson $\qty{A, B} = \pdv{A}{q}\pdv{B}{p}-\pdv{A}{p}\pdv{B}{q}$, temos então uma forma de representar compactamente a evolução temporal de um observável da seguinte maneira:
+	
+	$$\dv{t} A=\qty{ A, H}+\pdv{A}{t}$$
+	
+	\newpage
+	\section{Quantização Canônica}
+	
+	Os fenômenos da mecânica quântica foram bem descritos utilizando o escopo da álgebra linear e, em estudos mais profundos, da análise funcional, com as seguintes observações: Os operadores que representam quantidades físicas mensuráveis são hermitianos e seus autovalores são os possíveis valores medidos em laboratório. Dessa forma, o formalismo da mecânica quântica começa com a promoção das quantidades físicas a operadores em um espaço vetorial de funções, esse procedimento é dito quantização canônica. Seja $\mathcal{Q}$ uma quantidade física, essa quantidade na mecânica quântica será representada por um operador $Q$. E os nossos objetos de interesse que descrevem as amplitudes de probabilidade são as funções de onda $\psi(\mathbf{r}) \in \mathcal{E}$, onde $\mathcal{E}$ é o espaço de estados. Esse é um espaço dotado do produto interno.
+	
+	\[\braket{\psi}{\phi}:= \int_{\mathbb{R}^3}d^3r \,\psi^*\phi\]
+	
+	E esse espaço equipado com esse produto interno será completo e, dessa forma, será dito um espaço de Hilbert. Como esse espaço é de dimensão infinita, podemos expressar nossas funções de onda como:
+	
+	\[\psi(\mathbf{r})=\sum_i^{\infty} c_i u_i(r), \quad \text{tal que} \quad c_i=\braket{u_i}{\psi}\]
+	
+	Sendo que o conjunto $\{u_i\}$ é um conjunto de vetores ortogonais e está indexado por um conjunto enumerável, que gera os vetores do espaço vetorial, sendo que esta última característica é chamada de completude. Assim, os conjuntos que respeitam essas propriedades irei conotá-los por bases discretas e os conjuntos não enumeráveis serão ditos bases contínuas. Agora apresento a seguinte notação que será muito útil, que é conhecida como notação de Dirac.
+	
+	Seja a expansão de uma função de onda em uma base discreta:
+	
+	\[\psi=\sum \braket{u_i}{\psi} u_i\]
+	
+	Podemos, motivados por essa notação de produto interno, definir que os elementos do espaço vetorial são denotados por $\ket{\psi}$ e os covetores por $\bra{\psi}$. Então, essa equação se torna:
+	
+	\[\ket{\psi}=\sum \braket{u_i}{\psi} \ket{u_i}=\sum c_i \ket{u_i}\]
+	\newpage
+	\section{A Dinâmica do Formalismo}
+	
+	A seguinte pergunta pode ser feita no presente momento: "Como o estado de um sistema quântico é formulado? Qual é a equação dinâmica do formalismo?". Dessa forma, pode-se, com base em experimentos, postular que:
+	\begin{enumerate}[label=\roman*]
+		\item Em um tempo fixo $t_0$, o estado de um sistema físico é definido conhecendo $\ket{\psi(t_0)} \in \mathcal{E}$.
+		\item Toda quantidade física mensurável $\mathcal{A}$ é descrita por um operador linear hermitiano e observável $A$ agindo no espaço de estados.
+		\item Os únicos possíveis resultados de uma medição de $\mathcal{A}$ são os autovalores do operador linear $A$.
+		\item Quando uma quantidade física é medida em um estado normalizado, a probabilidade de medir o autovalor, digamos $a_n$, será dada por:
+	\end{enumerate}
 	
 	\[\mathcal{P}(a_n)=\sum^{g_n}_i|\braket{u^i_n}{\psi}|^2\]
 	
-	\text{onde \(g_n\) é a degenerescência do autovalor \(a_n\)}
+	onde $g_n$ é a degenerescência do autovalor $a_n$.
 	
+	Podemos também agora propor o seguinte operador $U(t,t_0)$ tal que:
 	
-	Podemos também agora propor o seguinte operador \(U(t,t_0)\) tal que 
+	\[\ket{\psi,t_1}=U(t_1,t_0)\ket{\psi,t_0}\]
 	
-	\[\ket{\psi,t_1}=U(t_1,t_0)\ket{\psi,t_0}\] e exigimos que ele conserve a probabilidade justamente e isso implica que ele seja unitário, temos que 
+	e exigimos que ele conserve a probabilidade, e isso implica que ele seja unitário. Temos que:
+	
 	\[\ket{\psi,t_2}=U(t_2,t_1)\ket{\psi,t_1}=U(t_2,t_1)U(t_1,t_0)\ket{\psi,t_0}\]
 	
-	Portanto temos a seguinte igualdade
+	Portanto, temos a seguinte igualdade:
 	
 	\[U(t_2,t_0)=U(t_2,t_1)U(t_1,t_0)\]
 	
-	Mostra que é o produto é uma evolução temporal e associativo, fazendo \(t_2=t_0\) temos que:
+	que mostra que o produto é uma evolução temporal e associativo. Fazendo $t_2=t_0$ temos que:
 	
-	\[I=U(t_0,t_1)U(t_1,t_0) \implies U^{-1}(t_1,t_0)=U(t_0,t_1\]
+	\[I=U(t_0,t_1)U(t_1,t_0) \implies U^{-1}(t_1,t_0)=U(t_0,t_1)\]
 	
-	E também podemos escrever o operador \(U(t_n,t_1\) da seguinte forma 
+	E também podemos escrever o operador $U(t_n,t_1)$ da seguinte forma:
 	
 	\[U(t_n,t_1)=U(t_n,t_{n-1}) \dots U(t_3,t_2)U(t_2,t_1)\]
-	
-	
-	Um resultado importante para a formulações os propagadores.
-	
-	
-	
-	, assim expandindo em Taylor até a primeira ordem  temos que \(U(t,t_0)=I+\epsilon\Omega\) e usando  que \(U^+U=I\), onde o simbolo \("+"\) indica que esse é o adjunto, podemos então 
-	
-	\[U^+U=(I+\epsilon\Omega t^+)(I+\epsilon\Omega t )=I+ t\epsilon(\Omega^++\Omega)+O(\epsilon^2)=I\]
-	
-	Desprezando os termos de segunda ordem teremos que \(\Omega=-\Omega^+\) esses operadores podem ser redefinidos utilizando a unidade imaginária, \(-Hi=\Omega\). Porém, temos que na mecânica clássica o gerador da evolução temporal é o hamiltoniano então podemos realizar o mesmo aqui apenas redefinindo que \(H \to H/\hbar\) isso deve-se ao fato de que $H$ tem dimensão de inverso do tempo, então utilizando a relação de planck temos que $E/\hbar=\omega$. Dessa forma essa definição satisfaz as leis que foram obtidas anteriormente na teoria. E a partir dessa definição temos que o operador U satisfaz a seguinte equação diferencial.
-	
-	\[\partial_t U=-\frac{i}{\hbar}HU\]
-	
-	Podemos aplicar dos dois lados um vetor de estado e essa equação será valida independente de U, então obtemos a seguinte equação que nos permite conhecer a evolução temporal dos vetores de estado essa equação é chamada de Equação de Schrödinger.
-	
-	\[i\hbar \partial_t \ket{\psi,t}=H\ket{\psi,t}\]
-	newpage
-	\section{Operador densidade}
-	
-	Até o momento apenas analisei casos em que o estado era supostamente bem conhecido esses estados são ditos estados puros, podemos ter estados com mistura de outros, a forma como abordamos matematicamente é com uma combinação convexa entre esses estados, i.e. os coeficientes possuem a seguinte relação $\sum p_k=1, \,p_k \geq0$
-	
-	$$\ket{\psi,t}=\sum p_k \ket{\psi_k}$$
-	
-	Como podemos expressar cada $\psi_k$ em termos de uma base $u_k$, supomos que ela é discreta. Então
-	
-	
-	
-	
-	$$\ket{\psi,t}=\sum_{k} \sum_n c_n(t) \ket{u_n^k}$$
-	
-	Sendo que todos os vetores de estado são normalizados. Se $A$ for um observável,com $\mel{u_n}{A}{u_p}$ Temos que
-	
-	$$\lrangle{A}_k(t)=\bra{\psi,t}A\ket{\psi,t}=\sum_{n,m}( c_n^{*k}c_m^{k}\bra{u_n^k}A\ket{u_m^{k}}$$
-	Sendo que irei definir o seguinte elemento objeto 
-	$$\qty[\rho_k]_{mn}=c^{*k}_n(t)c_m^k(t)$$
 	\newpage
-	Dessa forma obtemos simplificando o seguinte
+	Um resultado importante para a formulação dos propagadores. Assim, expandindo em Taylor até a primeira ordem, temos que $U(t,t_0)=I+\epsilon\Omega$ e, usando que $U^\dagger U=I$, onde o símbolo "$\dagger$" indica que este é o adjunto, podemos então:
 	
+	\[U^\dagger U=(I+\epsilon\Omega^\dagger t)(I+\epsilon\Omega t)=I+ \epsilon(\Omega^\dagger+\Omega)t+O(\epsilon^2)=I\]
 	
-	$$\sum_{n,m} \qty[\rho_k]_{mn}A_{nm}=\sum_{k,n,m}p_k C_mm=\Tr \qty{\rho_kA}$$
+	Desprezando os termos de segunda ordem, teremos que $\Omega=-\Omega^\dagger$. Esses operadores podem ser redefinidos utilizando a unidade imaginária, $\Omega=-\frac{i}{\hbar}H$. Porém, temos que na mecânica clássica o gerador da evolução temporal é o hamiltoniano, então podemos realizar o mesmo aqui, apenas redefinindo que $H \to H/\hbar$. Isso deve-se ao fato de que $H$ tem dimensão de energia, e a razão $H/\hbar$ tem dimensão de inverso de tempo, o que é consistente com a frequência $\omega$ via a relação de Planck $E=\hbar\omega$. Dessa forma, essa definição satisfaz as leis que foram obtidas anteriormente na teoria. E a partir dessa definição temos que o operador $U$ satisfaz a seguinte equação diferencial:
 	
-	E definindo que o valor esperado do observável $A$ é a média ponderada do valor esperado $\lrangle{A}_k$
+	\[\dv{t} U=-\frac{i}{\hbar}HU\]
 	
-	$$\lrangle{A}:=\sum_k p_k \Tr \rho_kA= \Tr \qty{\rho A}$$
+	Podemos aplicar dos dois lados um vetor de estado, e essa equação será válida independentemente de $U$, então obtemos a seguinte equação que nos permite conhecer a evolução temporal dos vetores de estado. Essa equação é chamada de Equação de Schrödinger.
 	
-	Onde foi definido o seguinte operador dito operador densidade
+	\[i\hbar \dv{t} \ket{\psi,t}=H\ket{\psi,t}\]
+	Agora que é conhecido a equação que rege a dinâmica das funções de onda podemos tentar conhecer a variação temporal do valor esperado de um observável.
+	$$\dv{t}(\bra{\psi}A\ket{\psi})=-\frac{1}{i\hbar}\bra{\psi}HA\ket{\psi}+\bra{\psi} \pdv{A}{t} \ket{\psi}+\frac{1}{i\hbar}\bra{\psi}AH\ket{\psi}$$ 
 	
-	$$\rho=\sum_k \rho_k= \sum_k p_k\dyad{\psi_k}$$
+	E definindo o seguinte operador $\qty[A,B]=AB-BA$, teremos que
 	
-	Agora irei comentar sobre seu significado, os coeficientes do operador densidade são em geral uma média ponderada das probabilidades de encontrar determinando estado, os termos mistos ( indices distintos) são os termos de interferência, quando os os termos mistos são nulos os estados são ditos incoerentes e os termos da diagonal medem a probabilidade do estado ser medido se não houvesse interferência. E utilizando a derivação temporal de um operador temos que em geral os coeficientes são dados por:
+	$$\dv{\expected{A}}{t}=\frac{1}{i\hbar}\expected{\qty[A,H]}+\expected{\pdv{A}{t}}$$
+	Também pode ser escrito sem utilizar o valor esperado
 	
-	$$\rho_np(t)=\rho_{np}(0)exp \qty{- \frac{i}{\hbar}(E_n-E_p)}$$
+	$$\dv{A}{t}=\frac{1}{i\hbar}\qty[A,H]+\pdv{A}{t}$$
+	
+	Então comparando com a equação que obtemos na mecânica clássica, vemos que a quantização canônica dos parenteses de poisson é
+	
+	$$ \qty{A, B} \to \frac{1}{i\hbar}\qty[A,B]$$
+	
+	\newpage
+	\section{Operador Densidade}
+	
+	Até o momento, apenas analisei casos em que o estado era supostamente bem conhecido. Esses estados são ditos estados puros. Podemos ter estados com mistura de outros. A forma como abordamos matematicamente é com uma combinação convexa entre esses estados, i.e., os coeficientes possuem a seguinte relação $\sum p_k=1, \,p_k \geq0$.
+	
+	$$\ket{\psi,t}=\sum_k p_k \ket{\psi_k}$$
+	
+	Como podemos expressar cada $\psi_k$ em termos de uma base $u_k$, supomos que ela é discreta. Então:
+	
+	$$\ket{\psi_k(t)}=\sum_n c_n^{(k)}(t) \ket{u_n}$$
+	
+
+	
+	Sendo que todos os vetores de estado são normalizados. Se $A$ for um observável, com $\mel{u_n}{A}{u_p}$, temos que:
+	
+	$$\expected{A}_k(t)=\bra{\psi_k(t)}A\ket{\psi_k(t)}=\sum_{n,m} c_n^{(k)*}(t) c_m^{(k)}(t) \mel{u_n}{A}{u_m}$$
+	
+	Sendo que irei definir o seguinte objeto:
+	
+	$$\qty[\rho_k]_{mn}=c_n^{(k)*}(t)c_m^{(k)}(t)$$
+	
+	Dessa forma, obtemos, simplificando o seguinte:
+	
+	$$\sum_{n,m} \qty[\rho_k]_{mn}A_{nm}=\Tr \qty{\rho_k A}$$
+	
+	E definindo que o valor esperado do observável $A$ é a média ponderada do valor esperado $\expected{A}_k$:
+	
+	$$\expected{A}:=\sum_k p_k \Tr \qty{\rho_k A} = \Tr \qty{\rho A}$$
+	
+	Onde foi definido o seguinte operador, dito operador densidade:
+	
+	$$\rho=\sum_k p_k\dyad{\psi_k}$$
+	\newpage
+	Agora irei comentar sobre seu significado. Os coeficientes do operador densidade são, em geral, uma média ponderada das probabilidades de encontrar um determinado estado. Os termos mistos (índices distintos) são os termos de interferência. Quando os termos mistos são nulos, os estados são ditos incoerentes, e os termos da diagonal medem a probabilidade do estado ser medido se não houvesse interferência. Utilizando a derivação temporal de um operador, temos que, em geral, os coeficientes são dados por:
+	
+	$$\rho_{np}(t)=\rho_{np}(0)\exp \qty{- \frac{i}{\hbar}(E_n-E_p)t}$$
 	
 \end{document}

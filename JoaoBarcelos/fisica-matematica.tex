@@ -1,0 +1,214 @@
+\documentclass{book}
+\usepackage{atalhos}
+\title{Notas de Física Matemática}
+\author{Nata}
+\date{\today}
+\begin{document}
+	\maketitle
+	\chapter{Quantização Canonica}
+	A quantização canonica é dada diretamente assumindo a seguinte relação de comutação	
+	
+	\begin{eqnarray}
+		\comm{x}{p}=i\hbar \\
+		\comm{x}{x}=\comm{p}{p}=0		
+	\end{eqnarray}
+	\section{Formalismo Hamiltoniano}
+	\begin{equation}
+		H=p_i \dot{q}_i-L
+	\end{equation}
+	Sabemos que as equações de Hamilton são
+	
+	\begin{eqnarray}
+		\pdv{H}{q_i}=\dot{p}_i \\
+		\pdv{H}{p_i}=\dot{q}_i
+	\end{eqnarray}
+	Agora irei mostrar que podemos ir dos parenteses de poisson ate os comutadores, a derivada temporal de uma variável dinâmica é
+	
+	\begin{equation}
+		\dv{A}{t}= \qty{A,H}+\pdv{A}{t}
+	\end{equation}
+
+	Agora tendo a seguinte equação de autovalor $A \psi =a \psi$ e tomando a derivada temporal e utilizando a equação de Schrödinger, teremos que a derivada temporal total de um operador que representar uma variavel dinamica é
+	
+	\begin{equation}
+		\dv{A}{t}= \frac{1}{i\hbar} \comm{A}{H}+ \pdv{A}{t}
+	\end{equation}
+	Onde foi definido que o operador $\dv{A}{t} \psi=\dv{a}{t}\psi$. Assim, vemos que pela quantização canônica que 
+	
+	\begin{equation}
+		\qty{A,B} \to \frac{1}{i\hbar} \comm{A}{B}
+	\end{equation} 
+	
+	Agora podemos generalizar, os parenteses fundamentais de poisson são
+	
+	
+	\begin{align}
+		\qty{q_i,p_j}= \delta_{ij}\\
+		\qty{q_i,q_j}=\qty{p_i,p_j}=0
+	\end{align}
+	A algebra dos comutadores é a mesma dos parenteses de poisson e também agora podemos fazer que as relações de comutação canonica seja
+	
+	\begin{align}
+		\comm{q_i}{p_j}=i\hbar \delta_{ij}
+	\end{align}
+
+
+
+\section{Passagem para o contíno}
+
+\chapter{Integrais de Caminho}
+
+
+\section{Propagador}
+Buscamos
+
+\begin{equation}
+	\psi(x',t')= \int \dd[3]{x}K(x',t';x,t) \psi(x,t)
+\end{equation}
+
+Podemos escrever K em termos das autofunções do operador hamiltoniano 
+
+\begin{equation}
+	K= \sum_n \phi_n(x')\phi^*_n(x)\exp(-\frac{i}{\hbar}E_n(t'-t)) \label{propagador-representacao-energia}
+\end{equation}
+
+
+\section{Propagador da particula Livre}
+\begin{equation}
+	H=-\frac{\hbar^2}{2m} \dv[2]{x}
+\end{equation}
+e os autoestados são
+
+ \begin{equation}
+ 	\phi= \frac{1}{\sqrt{2\pi\hbar}e^{ipx/\hbar}}
+ \end{equation}
+ 
+ Como é contínua temos que a relação  $\sum \to \int$. E após algebrismos temos que
+ 
+ 
+ \begin{align}
+ 	\frac{1}{2\pi \hbar} \exp[\frac{im}{2\hbar} \frac{(x'-x)^2}{t'-t}] \times \\ \times \int dp \exp{-\frac{i(t'-t)}{2m\hbar}[p-\frac{m(x'-x)}{t'-t}]^2}
+ \end{align} 
+ 
+ Observando que a integração pode ser feita completando o quadrado, e ou utilizando a integração gaussiana generica ( teorema de wick) temos que
+ 
+ 
+ \begin{equation}
+ 	=\frac{1}{2\pi \hbar} \sqrt{\frac{2\pi m \hbar}{i(t'-t)}}\exp[\frac{im}{2\hbar} \frac{(x'-x)^2}{t'-t}]
+ \end{equation}
+ 
+ \begin{equation}
+ =\sqrt{\frac{m}{2\pi i\hbar (t'-t)}}\exp[\frac{im}{2\hbar} \frac{(x'-x)^2}{t'-t}]
+ \end{equation}
+ 
+ 
+ 
+ \section{Formula de Mehler}
+ 
+ Tendo a formula de rodrigues para os polinomios de Hermite temos que
+ 
+ \begin{equation}
+ 	H_n(z)=(-1)^n e^{z^2} \dv[n]{z}e^{-z^2}
+ \end{equation}
+ E usando 
+ 
+ \begin{equation}
+ 	\int dx e{-x^2+2izx}=e^-z \int dx e^{-x^2+2izx-z^2}
+ \end{equation}
+ Temos que
+ 
+ \begin{equation}
+ 	e^{-z^2}= \frac{1}{\sqrt{\pi}}\int dx e^{-x^2+2izx}
+ \end{equation}
+ E substituindo na formula de rodrigues teremos que
+ 
+ 
+ \begin{equation}
+ 	\frac{(-2i)^n}{\sqrt{\pi}} \int dx  x^n e^{-(x-iz)^2}
+ \end{equation}
+ 
+ Agora podemos buscar resolver
+ 
+ \begin{equation}
+ 	\sum_{n=0}^{\infty} \frac{\tau^n}{2^n n!}H_n(z)H_n(z')
+ \end{equation}
+ \begin{align}
+ 	\sum_{n=0}^{\infty} \frac{\tau^n}{2^n n!} H_n(z) H_n(z') &= \sum_{n=0}^{\infty} \frac{\tau^n}{2^n n!} \left( \frac{-2i}{\pi} \right)^n \int_{-\infty}^{\infty} dx \int_{-\infty}^{\infty} dy \ x^n y^n e^{-(x-iz)^2} e^{-(y-iz')^2} \nonumber\\
+ 	&= \frac{1}{\pi} \int_{-\infty}^{\infty} dx \int_{-\infty}^{\infty} dy \ e^{-(x-iz)^2 - (y-iz')^2} \sum_{n=0}^{\infty} \frac{(-2\tau xy)^n}{n!} \nonumber\\
+ 	&= \frac{1}{\pi} \int_{-\infty}^{\infty} dx \int_{-\infty}^{\infty} dy \ e^{-(x-iz)^2 - (y-iz')^2 - 2\tau xy} \nonumber\\
+ 	&= \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} dx e^{-(x-iz)^2 - 2iz'\tau x+\tau^2x^2} \nonumber \\
+ 	& \times  \int_{-\infty}^{+\infty} dy e^{-(y-iz'+\tau x)^2 } \nonumber\\
+ 	&= \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} dx e^{-(x-iz)^2 - 2iz'\tau x+\tau^2x^2} \nonumber  \\
+ 	&= \frac{1}{\sqrt{\pi}} \int_{-\infty}^{\infty} dx e^{-(1-\tau^2)x^2 + 2i(z-\tau z')x+z^2} \nonumber\\
+ 	&= \frac{1}{\sqrt{\pi}} \exp \left[ z^2 - \frac{(z-\tau z')^2}{1-\tau^2} \right] \int_{-\infty}^{\infty} dx \exp \left[ -(1-\tau^2) \left( x + \frac{i(z-\tau z')}{1-\tau^2} \right)^2 \right] \nonumber\\
+ 	&= \frac{1}{\sqrt{1-\tau^2}} \exp \left[ z^2 - \frac{(z-\tau z')^2}{1-\tau^2} \right] \nonumber \\
+ 	&= \frac{1}{\sqrt{1-\tau^2}} \exp \left[ \frac{2\tau zz' - \tau^2(z^2+z'^2)}{1-\tau^2} \right] \label{Mehler}
+ \end{align}
+ \newpage
+ 
+ \section{Propagador para o Oscilador Harmonico}
+ 
+ As autofunções são dadas por
+ \begin{equation}
+ 	\phi_n(x) = \sqrt{\frac{1}{2^n n!} \sqrt{\frac{m\omega}{\pi\hbar}}} e^{\frac{-m\omega x^2}{2\hbar}} H_n \left( \sqrt{\frac{m\omega}{\hbar}} x \right). 
+ \end{equation}
+ 
+ Fazendo a substituição em  \eqref{propagador-representacao-energia}, temos
+ \begin{align}
+ 	K(x', t'; x, t) &= \sqrt{\frac{m\omega}{\pi\hbar}} e^{m\omega(x'^2+x^2)/2\hbar} \times \nonumber \\
+ 	& \quad \times \sum_{n=0}^{\infty} \frac{H_n \left( \sqrt{\frac{m\omega}{\hbar}} x \right) H_n \left( \sqrt{\frac{m\omega}{\hbar}} x \right)}{2^n n!} e^{-iE_n(t-t_0)/\hbar} \nonumber \\
+ 	&= \sqrt{\frac{m\omega}{\pi\hbar}} \exp \left[- \frac{m\omega}{2\hbar}(x'^2+x^2) - \frac{i}{2}\omega(t-t_0) \right] \times \nonumber \\
+ 	& \quad \times \sum_{n=0}^{\infty} \frac{H_n \left( \sqrt{\frac{m\omega}{\hbar}} x' \right) H_n \left( \sqrt{\frac{m\omega}{\hbar}} x \right)}{2^n n!} e^{-in\omega[(t'-t)]} 
+ \end{align}
+ 
+ O somatório acima pode ser calculado com o uso da fórmula de Mehler, equação \eqref{Mehler}
+ 
+ Teremos então
+ 
+ e sabendo que $1-e^{2i \theta}=-2isin \theta e^{i\theta}$ Teremos que na formula de mehler nos da
+ 
+\begin{equation}
+	K(x', t'; x, t) = \sqrt{\frac{m\omega}{2\pi i\hbar \sin(\omega(t'-t))}} \exp \left[ \frac{im\omega}{2\hbar\sin(\omega(t'-t))} \left( (x'^2+x^2)\cos(\omega(t'-t)) - 2x'x \right) \right]
+\end{equation}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+\end{document}

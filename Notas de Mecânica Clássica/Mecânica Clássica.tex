@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{meuestilo}
 \title{Mecânica Clássica, Segundo Contato}
-\author{H. Natã}
+\author{Natã Hora}
 \begin{document}
  \maketitle
  \section{Formulação Newtoniana}
@@ -125,6 +125,71 @@ As funções f são supostas diferenciáveis nos seus argumentos e o parametro $
 $$f_i(\vb{x} \dots \vb{x}_N,\vb{\dot{x}}_1,\dots\vb{\dot{x}}_N,t)=0 , i=1 , \dots K <3N$$
 
 
+
+Agora iremos analisar um caso de uma particula sujeita a um vinculo em 3 dimensões temos então que a equação de movimento é: 
+
+$$m\ddot{\vb{x}}= \vb{F}+\vb{C}$$
+
+Onde C é uma força de vinculo a priori desconhecida, assim temos 4 equações ( 3 de movimento e 1 de superficie) sei que a força de vinculo é normal à superficie então podemos $\grad{f(\vb{x},t)}\neq 0$ na superficie então podemos realizar os seguintes requerimentos 
+
+$$\grad{f} \neq 0 \quad \text{em} \quad f=0 (\text{avaliado na superficie})$$
+
+A matriz das suas derivadas tem que ser ao menos de rank K, a força de vinculo normal à superficie é chamada de força normal 
+
+$$C=\lambda(t) \grad{f}$$
+
+
+Agora estamos prontos para formular melhor essa mecanica em sistemas vinculados, seja uma força consertativa e realizando o produto interno por $\dot{\vb{x}}$ temos que
+
+$$\dv{t}\qty\big(\frac{1}{2}m \dot{x}^2)= -\grad{V} \vdot \dot{\vb{x}}+ \lambda \grad{f} \vdot \dot{\vb{x}}$$
+
+Podemos
+
+
+$$\dv{t}E= \pdv{V}{t}- \lambda \pdv{f}{t}$$
+
+
+
+\subsubsection{Coordenadas Generalizadas}
+
+Temos então duas equações para N particulas restrita a uma variedade.
+
+$$m\ddot{\vb{x}}_i= \vb{F_i}+\sum_{i=1}^{K}\lambda_j(t) \grad_i{f_j}$$
+$$ f(\vb{x},t)=0$$
+
+Se $\vb*{\tau}$ for um vetor tangente que pertence a superficie claramente temos que
+
+
+$$ \sum_i(m_i) \ddot{\vb{x}}-\vb{F}_i) \vdot \vb*{\tau}=0$$
+
+Essas equações definem uma hypersuperficie de dimensão $3N-K$ que será chamada de variedade de configuração $\mathbb{Q}$. Agora podemos introduzir as coordenadas generalizadas $q^\alpha ( \vb{x}_1, \dots, \vb{x}_N )$ e a sua inversa existe e é continua e diferencialvel, então o jacobiano ( $\pdv{q^\alpha}{x^\beta}$) é não singular ao menos em alguma região. Podemos escolher-kas como.
+
+$$q^{n+i}=R_i(f_1), \dots, f_K)$$ onde $n=3N-K$
+
+
+\subsubsection{Equações de Lagrange}
+
+
+Os vetors tangentes podem ser escritos como
+
+
+$$ \vb*{\tau}_i= \epsilon^\alpha \pdv{x_i}{q^\alpha}$$
+
+
+E APOS MUITA CONTA POEMOS CHEGAR NAS EQUAÇÕES DE LAGRANGE DEPOIS EU FAÇOO
+
+
+
+
+\subsubsection{Fibrado Tangente T$\mathbb{Q}$}
+
+As velocidades não pertecem à variedade de configuração do sistema físico estudado. Como operar vetores que pertencem a espaços tangentes distintos diretamente não faz sentido ( percetem a espaços vetoriais diferentes) é necessário que seja explicíto a ideia do que é a velocidade nesse contexto. Nesse contexto a o campo develocidade é um campo vetorial que possui um vetor em cada ponto da sua variedade, assim como usualmente fazemos temos a noção que existe diveross vetores tangentes, então podemos ver a velocidade aq como a imagem do campo vetorial em cada ponto $ p \in \mathbb{Q}$. O lagrangiano $L(q,\dot{q},t)$ depende tanto da varíavel que pertence a variedaade de configuração tanto da variável que pertence ao espaço tangente em um ponto, então temos que o lagrangiano depende de um espaço mais geral que será o $T\mathbb{Q}= \coprod_{p \in \mathbb{Q}} T_p\mathbb{Q}$, esse espaço não é um espaço vetorial e chamaremos de variedade do espaço de fase. Então a lagrangiana é uma função $L: T\mathbb{Q} \times \mathbb{R} \to \mathbb{R}$. Agora vejamos como que as equações de lagrange são quando as trajetórias são escritas em $T \ \mathbb{Q}$, agora possuimos 2n equações diferenciais para resolver e encontrar as nossas curvas integrais. Pode-se também especificar uma trajetória por uma função $\Gamma(q,\dot{q},t)$ dando as condições iniciais  da função determina uma relaçao entre as condicções de inicias $(q_0^\alpha, \dot{q}_0^\alpha)$ e 2n-1 condições iniciais no fibrado tangente  determina a condição 2n-esima. A função é dita variável dinâmica ( uma generalização da definição usual). Suponha que $\Gamma(q,\dot{q})$ é independente do tempo, então a equação $\Gamma(q,\dot{q})=C$ define uma variedade de dimensão 2n-1 ( isso é um resultado de algebra linear isto é uma variedade afim) em $T\mathbb{Q}$ Se a função for dependente do tempo apenas muda que a variedade também mudará com o tempo. Concluindo as equações de lagrange são transformadas em 2n equaões diferenciais de primeira ordem no fibrado tangente
+
+$$\dv{q^\alpha}{t}= \dot{q}^\alpha , \quad \dv{\dot{q}^\alpha}{t}= W^\alpha(q,\dot{q},t)$$ 
+
+Ou definindo como coordenadas do espaço temos uma equação ( que nos dará as curvas características)
+
+$$\dv{\xi^j}{t}=f^j(\xi,t)$$
 
 
 

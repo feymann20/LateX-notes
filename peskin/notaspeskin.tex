@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{meuestilo}
+\title{Notas do Peskin-Grupo de Estudos}
+\author{Natã Hora}
+
+\begin{document}
+	\maketitle
+	\section{Quantização dos campos}
+	O inicio do cap 2 do peskin comenta sobre teoria classica de campos porém prefiro a abordagem de outros livros nao irei me preocupar aq em anotar-lo
+	Para quantizarmos, promovemos os campos $\phi,\pi$ a operadores e impomos que devem satisfazer relações de comutações, relembrando que para o caso de graus de liberdades finitos temos que
+	
+	$$ \qty[q_i,p_j]=i \delta_{ij}; \quad \qty[q_i,q_j]=0=\qty[p_i,p_j]$$	
+
+
+	Para o sistema contínuo a generalização é dada por 
+	$$ \qty[\phi(\vb{x}),\pi(\vb{y})]=i\delta^{(3)}(\vb{x-y}); \quad \qty[\phi(\vb{x}),\phi(\vb{y})]=0=\qty[\pi(\vb{x}),\pi(\vb{y})]$$	
+	
+Considerando que esses operadores não dependem do tempo ( retrato de Schrödinger)
+
+Tendo um campo que satisfaz a equação de KG temos que a sua expansão no espaço de Fourier será dada por ( o fator de normalização terei que estudar mais sobre).
+
+$$\phi ( \vb(x),t)=\int \frac{\dd[4]{p}}{(2\pi)^3}e^{i \vb{p} \vdot \vb{x}} \phi( \vb{p},t)$$
+
+Assim a equação de KG fica 
+
+
+$$\qty\big[\Box+m^2] \int \frac{\dd[4]{p}}{(2\pi)^3}e^{i \vb{p} \vdot \vb{x}} \phi( \vb{p},t)=$$
+$$\Box\int \frac{\dd[4]{p}}{(2\pi)^3}e^{i \vb{p} \vdot \vb{x}} \phi( \vb{p},t)
++m^2\int \frac{\dd[4]{p}}{(2\pi)^3}e^{i \vb{p} \vdot \vb{x}} \phi( \vb{p},t)=$$
+$$\qty{\big[\pdv[2]{t}+(|\vb{p}|^2+m^2)]}\phi(\vb{p},t)=0$$
+
+Para essa equação não possuir soluções triviais e se assumirmos que o campo não depende expliticamente do tempo temos que
+
+ $$(-|\vb{p}|^2+m^2)\phi(\vb{p},t)=0$$
+ 
+Logo o  $-|\vb{p}|^2+m ^2=0 \iff E^2$ 
+
+
+
+
+
+
+
+
+\end{document}
