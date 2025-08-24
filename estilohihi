@@ -1,0 +1,66 @@
+\ProvidesPackage{atalhos}
+\usepackage{bm}
+\newcommand{\expected}[1]{\langle#1 \rangle}
+\usepackage{amsmath} % Para ambientes de equações
+\usepackage{amssymb} % Para símbolos matemáticos
+\usepackage{amsthm} %
+\usepackage{physics} % Pacote  notação de física (derivadas, bra-ket, etc.)
+%\usepackage{fontspec} % Para usar fontes modernas (requer XeLaTeX ou LuaLaTeX)
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{microtype} % Para melhorar o espaçamento entre letras
+\usepackage{hyperref}\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue,
+    urlcolor=blue,
+    %bookmarks=true,
+    %bookmarksopen=true,
+    %bookmarksnumbered=true
+} % Para links clicáveis no PDF
+\usepackage{cleveref}
+
+\usepackage{enumitem}
+% Formatação de páginas e layout
+%\usepackage[a4paper, total={16cm, 24cm}, left=2.5cm, top=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+% Bibliografia com BibLaTeX
+\usepackage[style=numeric, backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+% ====================
+% COMANDOS PERSONALIZADOS
+% ====================
+
+% Definição de ambientes para Teoremas, etc.
+%\theoremstyle{plain}
+%\newtheorem{theorem}{Teorema}[chapter]
+%\newtheorem{corollary}[theorem]{Corolário}
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definição}[chapter]
+%\theoremstyle{remark}
+%\newtheorem{remark}{Nota}[chapter]
+
+% ====================
+% LAYOUT DO DOCUMENTO
+% ====================
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+
+
+% Babel para idioma Português (Brasil)
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% ----- Configurações de Fontes -----
+% Requer a compilação com XeLaTeX ou LuaLaTeX.
+% A fonte 'Latin Modern Roman' é uma alternativa moderna à Computer Modern.
+% Para usar sua fonte Lucida Console, substitua 'Latin Modern Roman' por 'Lucida Console'.
+% Por exemplo: \setmainfont{Lucida Console}
+% \setmainfont{Latin Modern Roman}
+
